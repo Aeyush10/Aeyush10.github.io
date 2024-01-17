@@ -15,9 +15,9 @@ body {
 }
 
 .image-container {
-	width: 100%;
-    height: auto
-	/* height: 100vh; */
+	width: 100vw;
+    /* height: auto; */
+	height: 100vh;
 	display: flex;
 	flex-direction: column;
 }
@@ -29,7 +29,7 @@ body {
 
 
 .image-map {
-            position: absolute;
+            position: relative;
             top: 0;
             left: 0;
             width: 100%;
@@ -37,7 +37,6 @@ body {
             z-index: 1;
         }
 </style>
-
 
 <body>
 	<div class="image-container">
@@ -47,30 +46,30 @@ body {
 		<img class="pdf-image" src="Portfolio/3.jpg" alt="Page 3" usemap="#pdfMap3">
 		<map name="pdfMap3" class="image-map">
             <!-- Define areas with hyperlinks -->
-            <area shape="rect" coords="715,190,750,210" href="https://drive.google.com/file/d/1J40FFn3kCr6U6YaODiXVgEhJ7iqnwHPp/view" alt="Link 1">
+            <area shape="rect" coords="715,190,750,210" href="https://drive.google.com/file/d/1J40FFn3kCr6U6YaODiXVgEhJ7iqnwHPp/view" alt="Link 1" id = 'link31'>
             <!-- <area shape="rect" coords="300,300,400,400" href="https://example.com/link2" alt="Link 2"> -->
             <!-- Add more areas for other hyperlinks -->
         </map>
         <img class="pdf-image" src="Portfolio/4.jpg" alt="Page 4" usemap="#pdfMap4">
 		<map name="pdfMap4" class="image-map">
             <!-- Define areas with hyperlinks -->
-            <area shape="rect" coords="115,280,325,300" href="https://www.figma.com/file/OLqV3BIDvyHij9iheE4esL/Prototype?type=design&node-id=0%3A1&mode=design&t=jSWIwOfQcpsytUo8-1">
-            <area shape="rect" coords="300,370,460,390" href="https://drive.google.com/file/d/1iBy8jDA8vw6gesH5JB0ZOrdqjkuk_i3r/view">
+            <area shape="rect" coords="115,280,325,300" href="https://www.figma.com/file/OLqV3BIDvyHij9iheE4esL/Prototype?type=design&node-id=0%3A1&mode=design&t=jSWIwOfQcpsytUo8-1" id = 'link41'>
+            <area shape="rect" coords="300,370,460,390" href="https://drive.google.com/file/d/1iBy8jDA8vw6gesH5JB0ZOrdqjkuk_i3r/view" id = 'link42'>
 			<!-- <area shape="rect" coords="300,300,400,400" href="https://example.com/link2" alt="Link 2"> -->
             <!-- Add more areas for other hyperlinks -->
         </map>
 		<img class="pdf-image" src="Portfolio/5.jpg" alt="Page 5" usemap="#pdfMap5">
 		<map name="pdfMap5" class="image-map">
             <!-- Define areas with hyperlinks -->
-            <area shape="rect" coords="1100,280,1245,300" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10305693&tag=1">
-            <area shape="rect" coords="645,310,710,330" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10305653">
+            <area shape="rect" coords="1100,280,1245,300" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10305693&tag=1" id = 'link51'>>
+            <area shape="rect" coords="645,310,710,330" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10305653" id = 'link52'>>
 			<!-- <area shape="rect" coords="300,300,400,400" href="https://example.com/link2" alt="Link 2"> -->
             <!-- Add more areas for other hyperlinks -->
         </map>
         <img class="pdf-image" src="Portfolio/6.jpg" alt="Page 6" usemap="#pdfMap6">
 		<map name="pdfMap6" class="image-map">
             <!-- Define areas with hyperlinks -->
-            <area shape="rect" coords="790,200,910,220" href="https://github.com/Aeyush10/Bandersnatch_for_fun">
+            <area shape="rect" coords="790,200,910,220" href="https://github.com/Aeyush10/Bandersnatch_for_fun" id = 'link61'>>
             <!-- <area shape="rect" coords="645,310,710,330" href="https://drive.google.com/file/d/1J40FFn3kCr6U6YaODiXVgEhJ7iqnwHPp/view"> -->
 			<!-- <area shape="rect" coords="300,300,400,400" href="https://example.com/link2" alt="Link 2"> -->
             <!-- Add more areas for other hyperlinks -->
@@ -78,8 +77,8 @@ body {
 		<img class="pdf-image" src="Portfolio/7.jpg" alt="Page 7" usemap="#pdfMap7">
 		<map name="pdfMap7" class="image-map">
             <!-- Define areas with hyperlinks -->
-            <!-- <area shape="rect" coords="340,612,390,635" href="https://github.com/PrateekSogra/CS677-Parallel-optimised-View-Synthesis"> -->
-            <area shape="rect" coords="0%,0%,100%,100%" href="https://github.com/PrateekSogra/CS677-Parallel-optimised-View-Synthesis">
+            <area shape="rect" coords="340,612,390,635" href="https://github.com/PrateekSogra/CS677-Parallel-optimised-View-Synthesis" id = 'link71'>
+            <!-- <area shape="rect" coords="0%,0%,100%,100%" href="https://github.com/PrateekSogra/CS677-Parallel-optimised-View-Synthesis" id = 'link71'>> -->
             <!-- <area shape="rect" coords="645,310,710,330" href="https://drive.google.com/file/d/1J40FFn3kCr6U6YaODiXVgEhJ7iqnwHPp/view"> -->
 			<!-- <area shape="rect" coords="300,300,400,400" href="https://example.com/link2" alt="Link 2"> -->
             <!-- Add more areas for other hyperlinks -->
@@ -87,8 +86,8 @@ body {
         <img class="pdf-image" src="Portfolio/8.jpg" alt="Page 8" usemap="#pdfMap8">
 		<map name="pdfMap8" class="image-map">
             <!-- Define areas with hyperlinks -->
-            <area shape="rect" coords="1270,660,1340,680" href="https://dl.acm.org/doi/pdf/10.1145/3568812.3603469">
-			<area shape="rect" coords="1230,695,1328,715" href="https://www.sigcse2024.org/details/sigcse-ts-2024-Papers-1/147/Trust-in-Generative-AI-among-Students-An-Exploratory-Study">
+            <area shape="rect" coords="1270,660,1340,680" href="https://dl.acm.org/doi/pdf/10.1145/3568812.3603469" id = 'link81'>>
+			<area shape="rect" coords="1230,695,1328,715" href="https://www.sigcse2024.org/details/sigcse-ts-2024-Papers-1/147/Trust-in-Generative-AI-among-Students-An-Exploratory-Study" id = 'link82'>>
             <!-- <area shape="rect" coords="645,310,710,330" href="https://drive.google.com/file/d/1J40FFn3kCr6U6YaODiXVgEhJ7iqnwHPp/view"> -->
 			<!-- <area shape="rect" coords="300,300,400,400" href="https://example.com/link2" alt="Link 2"> -->
             <!-- Add more areas for other hyperlinks -->
@@ -96,33 +95,136 @@ body {
 		<img class="pdf-image" src="Portfolio/9.jpg" alt="Page 9" usemap="#pdfMap9">
 		<map name="pdfMap9" class="image-map">
             <!-- Define areas with hyperlinks -->
-            <area shape="rect" coords="430,520,690,540" href="mailto:aayushk0072@gmail.com" >
-            <area shape="rect" coords="885,520,1030,540" href="https://www.linkedin.com/in/aayush-kumar-05a990213/" >
-			<area shape="rect" coords="885,565,980,585" href="https://github.com/Aeyush10" >
+            <area shape="rect" coords="430,520,690,540" href="mailto:aayushk0072@gmail.com" id = 'link91'>>
+            <area shape="rect" coords="885,520,1030,540" href="https://www.linkedin.com/in/aayush-kumar-05a990213/" id = 'link92'>>
+			<area shape="rect" coords="885,565,980,585" href="https://github.com/Aeyush10" id = 'link93'>>
 			<!-- <area shape="rect" coords="645,310,710,330" href="https://drive.google.com/file/d/1J40FFn3kCr6U6YaODiXVgEhJ7iqnwHPp/view"> -->
 			<!-- <area shape="rect" coords="300,300,400,400" href="https://example.com/link2" alt="Link 2"> -->
             <!-- Add more areas for other hyperlinks -->
         </map>
         <!-- Add more images for other PDF pages -->
     </div>
-<!-- <div id="big-container"> -->
-	<!-- <div id="title-container" class = "text-box">
-		Hi! I'm Aayush.
-	</div>
-	<div id="my-img">
-		<img src="img/me.jpeg" alt="My Image">
-	</div> -->
-	<!-- <div id="flexcol-container"> -->
-		<!-- <div id="info-container" class = "text-box">
-			I'm currently an undergraduate student at IIT Kanpur in India, studying computer science.
-		</div>
-		<div id="info-container" class = "text-box">
-			My research interests are in.....
-		</div> -->
-	<!-- </div> -->
-<!-- </div> -->
-<script>
-</script>
 
+    <script>
+        function adjustCoordinates(id, originalCoords) {
+                    const viewportWidth = window.innerWidth;
+        
+                    // Calculate new coordinates based on the percentage of viewport width
+                    const newCoordinates = {
+                        x1: (originalCoords.x1 / 1512) * viewportWidth,
+                        y1: (originalCoords.y1 / 1512) * viewportWidth,
+                        x2: (originalCoords.x2 / 1512) * viewportWidth,
+                        y2: (originalCoords.y2 / 1512) * viewportWidth,
+                    };
+        
+                    // Apply new coordinates to the area element
+                    const linkElement = document.getElementById(id);
+                    linkElement.coords = `${newCoordinates.x1},${newCoordinates.y1},${newCoordinates.x2},${newCoordinates.y2}`;
+                }
+        
+        // Adjust coordinates on page load and resize
+        window.addEventListener('load', function() {
+            adjustCoordinates('link31', { x1: 715, y1: 190, x2: 750, y2: 210 });
+        }
+        );
+
+        window.addEventListener('resize', function() {
+            adjustCoordinates('link31', { x1: 715, y1: 190, x2: 750, y2: 210 });
+        });
+
+        // Adjust coordinates on page load and resize
+        window.addEventListener('load', function() {
+            adjustCoordinates('link41', { x1: 115, y1: 280, x2: 325, y2: 300 });
+        }
+        );
+
+        window.addEventListener('resize', function() {
+            adjustCoordinates('link41', { x1: 115, y1: 280, x2: 325, y2: 300 });
+        });
+
+                    // Adjust coordinates for link51 on page load and resize
+        window.addEventListener('load', function () {
+            adjustCoordinates('link51', { x1: 1100, y1: 280, x2: 1245, y2: 300 });
+        });
+
+        window.addEventListener('resize', function () {
+            adjustCoordinates('link51', { x1: 1100, y1: 280, x2: 1245, y2: 300 });
+        });
+
+        // Adjust coordinates for link61 on page load and resize
+        window.addEventListener('load', function () {
+            adjustCoordinates('link61', { x1: 790, y1: 200, x2: 910, y2: 220 });
+        });
+
+        window.addEventListener('resize', function () {
+            adjustCoordinates('link61', { x1: 790, y1: 200, x2: 910, y2: 220 });
+        });
+
+        // Adjust coordinates for link71 on page load and resize
+        window.addEventListener('load', function () {
+            adjustCoordinates('link71', { x1: 340, y1: 612, x2: 390, y2: 635 });
+        });
+
+        window.addEventListener('resize', function () {
+            adjustCoordinates('link71', { x1: 340, y1: 612, x2: 390, y2: 635 });
+        });
+
+        // Adjust coordinates for link81 on page load and resize
+        window.addEventListener('load', function () {
+            adjustCoordinates('link81', { x1: 1270, y1: 660, x2: 1340, y2: 680 });
+        });
+
+        window.addEventListener('resize', function () {
+            adjustCoordinates('link81', { x1: 1270, y1: 660, x2: 1340, y2: 680 });
+        });
+
+        // Adjust coordinates for link91 on page load and resize
+        window.addEventListener('load', function () {
+            adjustCoordinates('link91', { x1: 430, y1: 520, x2: 690, y2: 540 });
+        });
+
+        window.addEventListener('resize', function () {
+            adjustCoordinates('link91', { x1: 430, y1: 520, x2: 690, y2: 540 });
+        });
+
+        // Adjust coordinates for link52 on page load and resize
+        window.addEventListener('load', function () {
+            adjustCoordinates('link52', { x1: 645, y1: 310, x2: 710, y2: 330 });
+        });
+
+        window.addEventListener('resize', function () {
+            adjustCoordinates('link52', { x1: 645, y1: 310, x2: 710, y2: 330 });
+        });
+
+        // Adjust coordinates for link82 on page load and resize
+        window.addEventListener('load', function () {
+            adjustCoordinates('link82', { x1: 1230, y1: 695, x2: 1328, y2: 715 });
+        });
+
+        window.addEventListener('resize', function () {
+            adjustCoordinates('link82', { x1: 1230, y1: 695, x2: 1328, y2: 715 });
+        });
+
+        // Adjust coordinates for link92 on page load and resize
+        window.addEventListener('load', function () {
+            adjustCoordinates('link92', { x1: 885, y1: 520, x2: 1030, y2: 540 });
+        });
+
+        window.addEventListener('resize', function () {
+            adjustCoordinates('link92', { x1: 885, y1: 520, x2: 1030, y2: 540 });
+        });
+
+        // Adjust coordinates for link93 on page load and resize
+        window.addEventListener('load', function () {
+            adjustCoordinates('link93', { x1: 885, y1: 565, x2: 980, y2: 585 });
+        });
+
+        window.addEventListener('resize', function () {
+            adjustCoordinates('link93', { x1: 885, y1: 565, x2: 980, y2: 585 });
+        });
+                
+    </script>
 </body>
+
+
 </html>
