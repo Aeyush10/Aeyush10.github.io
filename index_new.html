@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aayush Kumar - HCI Researcher</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a237e;
+            --secondary-color: #3949ab;
+            --accent-color: #5c6bc0;
+            --text-color: #2c3e50;
+            --light-text: #546e7a;
+            --background-color: #f8f9fa;
+            --card-background: #ffffff;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Main Content Styles */
+        main {
+            padding-top: 2rem;
+        }
+
+        /* Add animation keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .section {
+            background-color: var(--card-background);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin: 2rem 0;
+            padding: 2.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            border-radius: 3px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .profile-image {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .about-links {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .about-content.visible .profile-image,
+        .about-content.visible .about-text,
+        .about-content.visible .about-links {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .about-links a {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .about-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .about-links i {
+            margin-right: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Project Cards */
+        .project-card {
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            background-color: var(--card-background);
+            overflow: hidden;
+        }
+
+        .project-card .left-content {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .project-card .right-content {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .project-card.visible .left-content {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .project-card.visible .right-content {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .project-card:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-color: var(--accent-color);
+        }
+
+        .project-title {
+            color: var(--primary-color);
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--light-text);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .project-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .project-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+        }
+
+        .project-links i {
+            margin-right: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: left;
+            padding: 2.5rem;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: flex-start;
+            gap: 2rem;
+            padding-left: 0;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .social-links i {
+            margin-right: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .scholar-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .section {
+                padding: 1.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .profile-image {
+                max-width: 200px;
+                margin: 0 auto;
+            }
+
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+
+            .social-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .about-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <h1 class="site-title">Aayush Kumar</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="about-content">
+                <img src="img/me.jpeg" alt="Aayush Kumar" class="profile-image">
+                <div>
+                    <div class="about-text">
+                        <h2>About Me</h2>
+                        <p>I am a Human-Computer Interaction researcher with a focus on understanding and improving the relationship between humans and technology. My work explores the intersection of user experience, artificial intelligence, and interactive systems.</p>
+                        <p>Currently, I am investigating trust in generative AI systems among students, exploring how these technologies impact learning and education. My research combines quantitative and qualitative methods to understand user perceptions and behaviors in human-AI interaction.</p>
+                    </div>
+                    <div class="about-links">
+                        <a href="https://drive.google.com/file/d/1J40FFn3kCr6U6YaODiXVgEhJ7iqnwHPp/view" target="_blank">
+                            <i class="fas fa-file-alt"></i> CV
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=x-Ih638AAAAJ&hl=en" target="_blank">
+                            <img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" class="scholar-icon"> Google Scholar
+                        </a>
+                        <a href="https://github.com/Aeyush10" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="https://orcid.org/my-orcid?orcid=0009-0001-1048-2352" target="_blank">
+                            <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" alt="ORCID" class="scholar-icon"> ORCID
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Publications Section -->
+        <section id="publications" class="section">
+            <h2>Publications</h2>
+            
+            <div class="project-card">
+                <div class="left-content">
+                    <h3 class="project-title">To Google or To ChatGPT? A Comparison of CS2 Students' Information Gathering Approaches and Outcomes</h3>
+                    <p class="project-conference">arXiv 2025</p>
+                </div>
+                <div class="right-content">
+                    <p class="project-description">A mixed methods study comparing how CS2 students learn programming concepts using LLMs versus traditional online methods, examining learning approaches and outcomes across both scenarios.</p>
+                    <div class="project-links">
+                        <a href="https://arxiv.org/abs/2501.11935" target="_blank">
+                            <i class="fas fa-file-pdf"></i> View Paper
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="left-content">
+                    <h3 class="project-title">TableTalk: Scaffolding Spreadsheet Development with a Language Agent</h3>
+                    <p class="project-conference">arXiv 2025</p>
+                </div>
+                <div class="right-content">
+                    <p class="project-description">A novel approach to assist users in spreadsheet development through natural language interaction with AI agents.</p>
+                    <div class="project-links">
+                        <a href="https://arxiv.org/abs/2502.09787" target="_blank">
+                            <i class="fas fa-file-pdf"></i> View Paper
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="left-content">
+                    <h3 class="project-title">Trust in Generative AI among Students: An Exploratory Study</h3>
+                    <p class="project-conference">SIGCSE 2024</p>
+                </div>
+                <div class="right-content">
+                    <p class="project-description">An in-depth investigation of students' perceptions and trust in generative AI systems. This research explores the factors influencing trust in AI-assisted learning environments and provides insights for educators and AI developers.</p>
+                    <div class="project-links">
+                        <a href="https://dl.acm.org/doi/pdf/10.1145/3568812.3603469" target="_blank">
+                            <i class="fas fa-file-pdf"></i> View Paper
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="left-content">
+                    <h3 class="project-title">Towards Characterizing Trust in Generative Artificial Intelligence among Students</h3>
+                    <p class="project-conference">ICER 2023</p>
+                </div>
+                <div class="right-content">
+                    <p class="project-description">A comprehensive study examining the factors that influence students' trust in generative AI systems and their implications for educational settings.</p>
+                    <div class="project-links">
+                        <a href="https://dl.acm.org/doi/10.1145/3568813.3600139" target="_blank">
+                            <i class="fas fa-file-pdf"></i> View Paper
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="left-content">
+                    <h3 class="project-title">End-user Programming is WEIRD: How, Why and What to Do About It</h3>
+                    <p class="project-conference">VL/HCC 2023</p>
+                </div>
+                <div class="right-content">
+                    <p class="project-description">An analysis of the challenges and biases in end-user programming research and recommendations for more inclusive approaches.</p>
+                    <div class="project-links">
+                        <a href="https://ieeexplore.ieee.org/document/10305693" target="_blank">
+                            <i class="fas fa-file-pdf"></i> View Paper
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="left-content">
+                    <h3 class="project-title">Poster: End-User Programming is WEIRD</h3>
+                    <p class="project-conference">VL/HCC 2023</p>
+                </div>
+                <div class="right-content">
+                    <p class="project-description">A poster presentation highlighting the challenges of WEIRD (Western, Educated, Industrialized, Rich, Democratic) bias in end-user programming research.</p>
+                    <div class="project-links">
+                        <a href="https://ieeexplore.ieee.org/document/10305653" target="_blank">
+                            <i class="fas fa-file-pdf"></i> View Paper
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <h2>Projects</h2>
+            
+            <div class="project-card">
+                <div class="left-content">
+                    <h3 class="project-title">Interactive Storytelling System</h3>
+                </div>
+                <div class="right-content">
+                    <p class="project-description">A Bandersnatch-inspired interactive storytelling platform exploring user engagement and narrative branching. This project investigates how users make choices in interactive narratives and how these choices affect their experience.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Aeyush10/Bandersnatch_for_fun" target="_blank">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="left-content">
+                    <h3 class="project-title">Parallel View Synthesis</h3>
+                </div>
+                <div class="right-content">
+                    <p class="project-description">Research project focusing on optimizing view synthesis through parallel processing techniques. This work explores efficient methods for generating novel views in 3D environments, with applications in virtual and augmented reality.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/PrateekSogra/CS677-Parallel-optimised-View-Synthesis" target="_blank">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="left-content">
+                    <h3 class="project-title">Computer Graphics Research</h3>
+                </div>
+                <div class="right-content">
+                    <p class="project-description">Advanced computer graphics project exploring novel visualization techniques and user interaction paradigms. This research focuses on developing intuitive interfaces for complex data visualization and 3D interaction.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/Aeyush10/CS341_Graphics_Project" target="_blank">
+                            <i class="fab fa-github"></i> View on GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact-section">
+            <h2>Contact</h2>
+            <div class="social-links">
+                <a href="mailto:aayushk0072@gmail.com">
+                    <i class="fas fa-envelope"></i> Email (Personal)
+                </a>
+                <a href="mailto:t-aaykumar@microsoft.com">
+                    <i class="fas fa-envelope"></i> Email (Work)
+                </a>
+                <a href="https://www.linkedin.com/in/aayush-kumar-05a990213/" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Add smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add scroll-based animations
+        const sections = document.querySelectorAll('.section');
+        const projectCards = document.querySelectorAll('.project-card');
+        const aboutContent = document.querySelector('.about-content');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const sectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        const aboutObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections and project cards
+        sections.forEach(section => sectionObserver.observe(section));
+        projectCards.forEach(card => cardObserver.observe(card));
+        aboutObserver.observe(aboutContent);
+    </script>
+</body>
+</html> 
