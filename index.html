@@ -57,6 +57,12 @@
             font-size: 1.5rem;
             font-weight: 600;
             margin: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .site-title.visible {
+            opacity: 1;
         }
 
         nav ul {
@@ -158,8 +164,8 @@
         /* About Section */
         .about-content {
             display: grid;
-            grid-template-columns: 1fr 2fr;
-            gap: 2rem;
+            grid-template-columns: auto 1fr;
+            gap: 5rem;
             align-items: start;
         }
 
@@ -181,7 +187,7 @@
 
         .profile-image {
             width: 100%;
-            max-width: 300px;
+            max-width: 250px;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             opacity: 0;
@@ -190,8 +196,9 @@
         }
 
         .about-text {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             line-height: 1.8;
+            /* padding-top: 2rem; */
             opacity: 0;
             transform: translateX(30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -210,7 +217,7 @@
         .about-links {
             margin-top: 1.5rem;
             display: flex;
-            gap: 1rem;
+            gap: 3rem;
             opacity: 0;
             transform: translateX(30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -226,15 +233,20 @@
         .about-links a {
             display: inline-flex;
             align-items: center;
+            padding: 0.4rem 0.8rem;
+            background-color: transparent;
             color: #93c5fd;
             text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            border: 1px solid #93c5fd;
+            border-radius: 5px;
+            font-weight: 400;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
         }
 
         .about-links a:hover {
-            color: #bfdbfe;
-            transform: translateY(-2px);
+            background-color: #93c5fd;
+            color: #111827;
         }
 
         .about-links i {
@@ -466,8 +478,8 @@
                     <div class="about-text">
                         <!-- <h2>About Me</h2> -->
                         <div style="margin-bottom: 1.5rem;">
-                            <div style="font-size: 2rem; font-weight: 600; color: white; line-height: 1.8;">Hey there, I'm Aayush! 👋</div>
-                            <div style="font-size: 1.25rem; color: white; line-height: 1.2;">I'm interested in <strong>human-AI interactions</strong>, particularly in context of <strong>software engineering</strong> and <strong> programming education</strong>. Read on to know more!</div>
+                            <div style="font-size: 2rem; font-weight: 600; color: white; line-height: 1.8;">Aayush Kumar</div>
+                            <!-- <div style="font-size: 1.25rem; color: white; line-height: 1.2;">I'm interested in <strong>human-AI interactions</strong>, particularly in context of <strong>software engineering</strong> and <strong> programming education</strong>. Read on to know more!</div> -->
                         </div>
                         Research Fellow @
                         <a href="https://www.microsoft.com/en-us/research/group/prose/" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Microsoft PROSE</a> (2024 - Present)<br>
@@ -476,13 +488,13 @@
                     <div class="about-links">
                         <a href="CV/cv.html" target="_blank">
                             <i class="fas fa-file-alt"></i> CV
-                        </a> |
+                        </a>
                         <a href="https://scholar.google.com/citations?user=x-Ih638AAAAJ&hl=en" target="_blank">
                             <img src="https://scholar.google.com/favicon.ico" alt="Google Scholar" class="scholar-icon"> Google Scholar
-                        </a> |
+                        </a>
                         <a href="https://github.com/Aeyush10" target="_blank">
                             <i class="fab fa-github"></i> GitHub
-                        </a> |
+                        </a>
                         <a href="https://orcid.org/my-orcid?orcid=0009-0001-1048-2352" target="_blank">
                             <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" alt="ORCID" class="scholar-icon"> ORCID
                         </a>
@@ -778,6 +790,30 @@
         sections.forEach(section => sectionObserver.observe(section));
         projectCards.forEach(card => cardObserver.observe(card));
         aboutContents.forEach(content => aboutObserver.observe(content));
+
+        // Header name visibility based on first section
+        const siteTitle = document.querySelector('.site-title');
+        const firstSection = document.querySelector('#about');
+        
+        const headerObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.intersectionRatio > 0.8) {
+                    // More than 80% of first section is visible, hide name
+                    siteTitle.classList.remove('visible');
+                } else {
+                    // Less than 80% of first section is visible, show name
+                    siteTitle.classList.add('visible');
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px',
+            threshold: [0, 0.8, 1]
+        });
+
+        if (firstSection) {
+            headerObserver.observe(firstSection);
+        }
     </script>
 </body>
 </html> 
