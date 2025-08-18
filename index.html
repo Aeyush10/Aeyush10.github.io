@@ -8,14 +8,14 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #1a237e;
-            --secondary-color: #3949ab;
-            --accent-color: #5c6bc0;
-            --text-color: #2c3e50;
-            --light-text: #546e7a;
-            --background-color: #f8f9fa;
-            --card-background: #ffffff;
-            --border-color: #e0e0e0;
+            --primary-color: #60a5fa;
+            --secondary-color: #3b82f6;
+            --accent-color: #2563eb;
+            --text-color: #f3f4f6;
+            --light-text: #d1d5db;
+            --background-color: #111827;
+            --card-background: #1f2937;
+            --border-color: #374151;
         }
 
         body {
@@ -35,13 +35,13 @@
 
         /* Header Styles */
         header {
-            background-color: var(--primary-color);
+            background-color: #0f172a;
             color: white;
             padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
         .header-content {
@@ -120,13 +120,14 @@
         .section {
             background-color: var(--card-background);
             border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            margin: 2rem 0;
-            padding: 2.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            margin: 1rem 0;
+            padding: 1.25rem;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
             scroll-margin-top: 5rem;
+            border: 1px solid var(--border-color);
         }
 
         .section.visible {
@@ -138,7 +139,7 @@
             color: var(--primary-color);
             font-size: 1.8rem;
             font-weight: 600;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             position: relative;
             padding-bottom: 0.5rem;
         }
@@ -158,7 +159,7 @@
         .about-content {
             display: grid;
             grid-template-columns: 1fr 2fr;
-            gap: 3rem;
+            gap: 2rem;
             align-items: start;
         }
 
@@ -197,19 +198,19 @@
         }
 
         .about-text a {
-            color: var(--secondary-color);
+            color: #93c5fd;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .about-text a:hover {
-            color: var(--primary-color);
+            color: #bfdbfe;
         }
 
         .about-links {
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             display: flex;
-            gap: 1.5rem;
+            gap: 1rem;
             opacity: 0;
             transform: translateX(30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
@@ -225,14 +226,14 @@
         .about-links a {
             display: inline-flex;
             align-items: center;
-            color: var(--primary-color);
+            color: #93c5fd;
             text-decoration: none;
             font-weight: 500;
             transition: all 0.3s ease;
         }
 
         .about-links a:hover {
-            color: var(--accent-color);
+            color: #bfdbfe;
             transform: translateY(-2px);
         }
 
@@ -245,73 +246,86 @@
         .project-card {
             border: 1px solid var(--border-color);
             border-radius: 10px;
-            padding: 2rem;
-            margin: 1.5rem 0;
+            padding: 1rem;
+            margin: 0.75rem 0;
             background-color: var(--card-background);
             overflow: hidden;
+            position: relative;
         }
 
-        .project-card .left-content {
+        .project-card .content {
+            padding-right: 9rem;
             opacity: 0;
             transform: translateX(-30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
-        .project-card .right-content {
+        .project-card .project-links {
+            position: absolute;
+            top: 2rem;
+            right: 1rem;
             opacity: 0;
             transform: translateX(30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
-        .project-card.visible .left-content {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .project-card.visible .right-content {
+        .project-card.visible .content,
+        .project-card.visible .project-links {
             opacity: 1;
             transform: translateX(0);
         }
 
         .project-card:hover {
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4);
             border-color: var(--accent-color);
         }
 
         .project-title {
-            color: var(--primary-color);
+            color: #bfdbfe;
             font-size: 1.4rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin: 0 0 0.05rem 0;
+        }
+
+        .project-authors {
+            color: var(--light-text);
+            font-size: 0.95rem;
+            margin: 0 0 0.05rem 0;
+            font-style: italic;
+        }
+
+        .project-authors .author-name {
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .project-conference {
+            margin: 0 0 0.5rem 0;
         }
 
         .project-description {
             color: var(--light-text);
-            margin-bottom: 1.5rem;
-            line-height: 1.7;
-        }
-
-        .project-links {
-            margin-top: 1.5rem;
-            display: flex;
-            gap: 1rem;
+            margin-bottom: 0;
+            line-height: 1.5;
         }
 
         .project-links a {
             display: inline-flex;
             align-items: center;
             padding: 0.5rem 1rem;
-            background-color: var(--accent-color);
-            color: white;
+            background-color: transparent;
+            color: #93c5fd;
             text-decoration: none;
-            border-radius: 6px;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            border: 1px solid #93c5fd;
+            border-radius: 5px;
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
         }
 
         .project-links a:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
+            background-color: #93c5fd;
+            color: #111827;
         }
 
         .project-links i {
@@ -321,28 +335,28 @@
         /* Contact Section */
         .contact-section {
             text-align: left;
-            padding: 2.5rem;
+            padding: 1.75rem;
         }
 
         .social-links {
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             display: flex;
             justify-content: flex-start;
-            gap: 2rem;
+            gap: 1.5rem;
             padding-left: 0;
         }
 
         .social-links a {
             display: inline-flex;
             align-items: center;
-            color: var(--primary-color);
+            color: #93c5fd;
             text-decoration: none;
             font-size: 1.1rem;
             transition: all 0.3s ease;
         }
 
         .social-links a:hover {
-            color: var(--accent-color);
+            color: #bfdbfe;
             transform: translateY(-2px);
         }
 
@@ -403,8 +417,13 @@
                 gap: 1rem;
             }
 
-            .project-links {
-                flex-direction: column;
+            .project-card .content {
+                padding-right: 1rem;
+            }
+
+            .project-card .project-links {
+                position: static;
+                margin-top: 1rem;
             }
 
             .social-links {
@@ -447,12 +466,12 @@
                     <div class="about-text">
                         <!-- <h2>About Me</h2> -->
                         <div style="margin-bottom: 1.5rem;">
-                            <div style="font-size: 2rem; font-weight: 600; color: var(--primary-color); line-height: 1.8;">Hey there, I'm Aayush! 👋</div>
-                            <div style="font-size: 1.25rem; color: var(--primary-color); line-height: 1.2;">I'm interested in <strong>human-AI interactions</strong>, particularly in context of <strong>software engineering</strong> and <strong> programming education</strong>. Read on to know more!</div>
+                            <div style="font-size: 2rem; font-weight: 600; color: white; line-height: 1.8;">Hey there, I'm Aayush! 👋</div>
+                            <div style="font-size: 1.25rem; color: white; line-height: 1.2;">I'm interested in <strong>human-AI interactions</strong>, particularly in context of <strong>software engineering</strong> and <strong> programming education</strong>. Read on to know more!</div>
                         </div>
                         Research Fellow @
-                        <a href="https://www.microsoft.com/en-us/research/group/prose/" target="_blank" style="color: var(--secondary-color); text-decoration: none; transition: color 0.3s ease;">Microsoft PROSE</a> (2024 - Present)<br>
-                        B.Tech CSE @ <a href="https://www.iitk.ac.in/" target="_blank" style="color: var(--secondary-color); text-decoration: none; transition: color 0.3s ease;">Indian Institute of Technology Kanpur</a> (2020-2024)
+                        <a href="https://www.microsoft.com/en-us/research/group/prose/" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Microsoft PROSE</a> (2024 - Present)<br>
+                        B.Tech CSE @ <a href="https://www.iitk.ac.in/" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Indian Institute of Technology Kanpur</a> (2020-2024)
                     </div>
                     <div class="about-links">
                         <a href="CV/cv.html" target="_blank">
@@ -467,7 +486,6 @@
                         <a href="https://orcid.org/my-orcid?orcid=0009-0001-1048-2352" target="_blank">
                             <img src="https://orcid.org/sites/default/files/images/orcid_16x16.png" alt="ORCID" class="scholar-icon"> ORCID
                         </a>
-                    </div>
                 </div>
             </div>
         </section>
@@ -477,213 +495,200 @@
             <div class="about-content">
                 <div class="about-text">
                     <h2>About</h2>
-                    <p>I'm a Research Fellow at the <a href="https://www.microsoft.com/en-us/research/group/prose/" target="_blank" style="color: var(--secondary-color); text-decoration: none; transition: color 0.3s ease;">PROSE team</a> at Microsoft, where I work on agentic AI tools for software and spreadsheet development, guided by <a href="https://www.linkedin.com/in/captainemerson" target="_blank" style="color: var(--secondary-color); text-decoration: none; transition: color 0.3s ease;">Dr. Emerson Murphy-Hill</a>. By studying interactions with such tools, I aim to understand how we can improve them to make simple and effective tools for users.
-                        I recently completed my bachelor's degree in Computer Science and Engineering at <a href="https://www.iitk.ac.in/" target="_blank" style="color: var(--secondary-color); text-decoration: none; transition: color 0.3s ease;">Indian Institute of Technology Kanpur</a>, where I was fortunate to be advised by <a href="https://sruti-s-ragavan.github.io/" target="_blank" style="color: var(--secondary-color); text-decoration: none; transition: color 0.3s ease;">Prof. Sruti Ragavan</a>. During this time, I investigated the opportunities and challenges of using LLMs for programming education.</p>
-                    <p>My research interests lie at the intersection of human-AI interactions (HAI), software engineering (SE), and programming education. I'm excited by the opportunities created by the rise in the accessibility and proficiency of generative AI in democratizing software development and education, and firmly believe that understanding how and why people use these tools is key to realizing their full potential.</p>
+                    <p>I'm a Research Fellow at the <a href="https://www.microsoft.com/en-us/research/group/prose/" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">PROSE team</a> at Microsoft, where I work on agentic AI tools for software and spreadsheet development, guided by <a href="https://www.linkedin.com/in/captainemerson" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Dr. Emerson Murphy-Hill</a>. By studying interactions with such tools, I aim to understand how we can improve them to make simple and effective tools for users.
+                        I recently completed my bachelor's degree in Computer Science and Engineering at <a href="https://www.iitk.ac.in/" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Indian Institute of Technology Kanpur</a>, where I was fortunate to be advised by <a href="https://sruti-s-ragavan.github.io/" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Prof. Sruti Ragavan</a>. During this time, I investigated the opportunities and challenges of using LLMs for programming education.</p>
+                    <p>My research interests lie at the intersection of human-AI interactions, software engineering, and programming education. I'm excited by the opportunities created by the rise in the accessibility and proficiency of generative AI in democratizing software development and education, and firmly believe that understanding how and why people use these tools is key to realizing their full potential.</p>
                 </div>
             </div>
         </section>
 
         <!-- Publications Section -->
         <section id="publications" class="section">
-            <h2>Publications</h2>
+            <h2>Publications and Pre-prints</h2>
             
 
             <div class="project-card">
-                <div class="left-content">
+                <div class="content">
+                    <h3 class="project-title">How Developers Use AI Agents: When They Work, When They Don't, and Why</h3>
+                    <p class="project-authors"><span class="author-name">Aayush Kumar</span>, Yasharth Bajpai, Sumit Gulwani, Gustavo Soares, Emerson Murphy-Hill</p>
+                    <p class="project-conference">arXiv Pre-print</p>
+                    <p class="project-description">An empirical study to understand the strategies developers use when collaborating with AI agents on real-world tasks and the challenges to effective collaborations.</p>
+                </div>
+                <div class="project-links">
+                    <a href="https://arxiv.org/abs/2506.12347" target="_blank">
+                        <i class="fas fa-file-pdf"></i> View Paper
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="content">
+                    <h3 class="project-title">To Google or To ChatGPT? A Comparison of CS2 Students' Information Gathering Approaches and Outcomes</h3>
+                    <p class="project-authors"><span class="author-name">Aayush Kumar</span>, Daniel Prol, Amin Alipour, Sruti Srinivasa Ragavan</p>
+                    <p class="project-conference">arXiv Pre-print</p>
+                    <p class="project-description">A mixed methods study comparing how CS2 students learn programming concepts using LLMs versus traditional online methods, examining information gathering approaches and outcomes across both scenarios.</p>
+                </div>
+                <div class="project-links">
+                    <a href="https://arxiv.org/abs/2501.11935" target="_blank">
+                        <i class="fas fa-file-pdf"></i> View Paper
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="content">
+                    <h3 class="project-title">TableTalk: Scaffolding Spreadsheet Development with a Language Agent</h3>
+                    <p class="project-authors"> Jenny T. Liang, <span class="author-name">Aayush Kumar</span>, Yasharth Bajpai, Sumit Gulwani, Vu Le, Chris Parnin, Arjun Radhakrishna, Ashish Tiwari, Emerson Murphy-Hill, Guastavo Soares</p>
+                    <p class="project-conference">arXiv Pre-print</p>
+                    <p class="project-description">Developing and evaluating a multi-agentic AI tool that assists end-users in creating new spreadsheets.</p>
+                </div>
+                <div class="project-links">
+                    <a href="https://arxiv.org/abs/2502.09787" target="_blank">
+                        <i class="fas fa-file-pdf"></i> View Paper
+                    </a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="content">
                     <h3 class="project-title">Trust in Generative AI among Students: An Exploratory Study</h3>
+                    <p class="project-authors"> Matin Amoozadeh, David Daniels, Daye Nam, <span class="author-name">Aayush Kumar</span>, Stella Chen, Michael Hilton, Sruti Srinivasa Ragavan, Mohammad Amin Alipour</p>
                     <p class="project-conference">SIGCSE 2024</p>
-                </div>
-                <div class="right-content">
                     <p class="project-description">A survey-based study examining how trust in GenAI and the factors affecting this trust influence students' adoption of GenAI and their performance in CS courses.</p>
-                    <div class="project-links">
-                        <a href="https://dl.acm.org/doi/abs/10.1145/3626252.3630842" target="_blank">
-                            <i class="fas fa-file-pdf"></i> View Paper
-                        </a>
-                    </div>
+                </div>
+                <div class="project-links">
+                    <a href="https://dl.acm.org/doi/abs/10.1145/3626252.3630842" target="_blank">
+                        <i class="fas fa-file-pdf"></i> View Paper
+                    </a>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="left-content">
+                <div class="content">
                     <h3 class="project-title">End-user Programming is WEIRD: How, Why and What to Do About It</h3>
+                    <p class="project-authors">Harshit Goel,<span class="author-name"> Aayush Kumar</span>, Sruti Srinivasa Ragavan</p>
                     <p class="project-conference">VL/HCC 2023</p>
-                </div>
-                <div class="right-content">
                     <p class="project-description">An analysis of the participant recruitment biases in end-user programming research and recommendations for more inclusive approaches.</p>
-                    <div class="project-links">
-                        <a href="https://ieeexplore.ieee.org/document/10305693" target="_blank">
-                            <i class="fas fa-file-pdf"></i> View Paper
-                        </a>
-                    </div>
+                </div>
+                <div class="project-links">
+                    <a href="https://ieeexplore.ieee.org/document/10305693" target="_blank">
+                        <i class="fas fa-file-pdf"></i> View Paper
+                    </a>
                 </div>
             </div>
 
-            <div class="project-card">
-                <div class="left-content">
+            <!-- <div class="project-card">
+                <div class="content">
                     <h3 class="project-title">Towards Characterizing Trust in Generative Artificial Intelligence among Students</h3>
+                    <p class="project-authors"><span class="author-name">Aayush Kumar</span>, Jionghao Lin, Sruti Srinivasa Ragavan</p>
                     <p class="project-conference">ICER 2023 (Poster)</p>
                 </div>
-                <div class="right-content">
                     <p class="project-description">Preliminary results from an exploratory survey on student perceptions of GenAI tools and their confidence in programming.</p>
-                    <div class="project-links">
+                </div>
+                <div class="project-links">
                         <a href="https://dl.acm.org/doi/abs/10.1145/3568812.3603469" target="_blank">
                             <i class="fas fa-file-pdf"></i> View Paper
                         </a>
-                    </div>
+                </div>
+            </div> -->
+
+
+            <!-- <div class="project-card">
+                <div class="content">
+                    <h3 class="project-title">Poster: End-User Programming is WEIRD</h3>
+                    <p class="project-conference">VL/HCC 2023</p>
+                </div>
+                    <p class="project-description">A poster presentation highlighting the challenges of WEIRD (Western, Educated, Industrialized, Rich, Democratic) bias in end-user programming research.</p>
+                </div>
+                <div class="project-links">
+                        <a href="https://ieeexplore.ieee.org/document/10305653" target="_blank">
+                            <i class="fas fa-file-pdf"></i> View Paper
+                        </a>
+                </div>
+            </div> -->
+            <!-- Pre-prints -->
+
+
+
+            <div class="project-card">
+                <div class="content">
+                    <h3 class="project-title">TEN: Table Explicitization, Neurosymbolically</h3>
+                    <p class="project-authors">Nikita Mehrotra, <span class="author-name">Aayush Kumar</span>, Sumit Gulwani, Arjun Radhakrishna, Ashish Tiwari</p>
+                    <p class="project-conference">arXiv Pre-print</p>
+                    <p class="project-description">Defining and evaluating with real users a novel approach to extract tables from semi-structured input text utilizing both neurosymbolic methods as well as LLMs.</p>
+                </div>
+                <div class="project-links">
+                    <a href="https://arxiv.org/abs/2508.09324" target="_blank">
+                        <i class="fas fa-file-pdf"></i> View Paper
+                    </a>
                 </div>
             </div>
 
 
-            <!-- <div class="project-card">
-                <div class="left-content">
-                    <h3 class="project-title">Poster: End-User Programming is WEIRD</h3>
-                    <p class="project-conference">VL/HCC 2023</p>
-                </div>
-                <div class="right-content">
-                    <p class="project-description">A poster presentation highlighting the challenges of WEIRD (Western, Educated, Industrialized, Rich, Democratic) bias in end-user programming research.</p>
-                    <div class="project-links">
-                        <a href="https://ieeexplore.ieee.org/document/10305653" target="_blank">
-                            <i class="fas fa-file-pdf"></i> View Paper
-                        </a>
-                    </div>
-                </div>
-            </div> -->
+
         </section>
 
         <!-- Projects Section -->
         <section id="projects" class="section">
-            <h2>Projects</h2>
-
-
-            <div class="project-card">
-                <div class="left-content">
-                    <h3 class="project-title">How Developers Use AI Agents: When They Work, When They Don't, and Why</h3>
-                    <p class="project-conference">arXiv Pre-print</p>
-                </div>
-                <div class="right-content">
-                    <p class="project-description">An empirical study to understand the strategies developers use when collaborating with AI agents on real-world tasks and the challenges to effective collaborations.</p>
-                    <div class="project-links">
-                        <a href="https://arxiv.org/abs/2506.12347" target="_blank">
-                            <i class="fas fa-file-pdf"></i> View Paper
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <h2>Selected Projects</h2>
 
             <div class="project-card">
-                <div class="left-content">
-                    <h3 class="project-title">TableTalk: Scaffolding Spreadsheet Development with a Language Agent</h3>
-                    <p class="project-conference">arXiv Pre-print</p>
-                </div>
-                <div class="right-content">
-                    <p class="project-description">Developing and evaluating a multi-agentic AI tool that assists end-users in creating new spreadsheets.</p>
-                    <div class="project-links">
-                        <a href="https://arxiv.org/abs/2502.09787" target="_blank">
-                            <i class="fas fa-file-pdf"></i> View Paper
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="project-card">
-                <div class="left-content">
-                    <h3 class="project-title">TEN: Table Explicitization, Neurosymbolically</h3>
-                    <p class="project-conference">arXiv Pre-print</p>
-                </div>
-                <div class="right-content">
-                    <p class="project-description">Defining and evaluating with real users a novel approach to extract tables from semi-structured input text utilizing both neurosymbolic methods as well as LLMs.</p>
-                    <div class="project-links">
-                        <a href="https://arxiv.org/abs/2508.09324" target="_blank">
-                            <i class="fas fa-file-pdf"></i> View Paper
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="project-card">
-                <div class="left-content">
-                    <h3 class="project-title">To Google or To ChatGPT? A Comparison of CS2 Students' Information Gathering Approaches and Outcomes</h3>
-                    <p class="project-conference">arXiv Pre-print</p>
-                </div>
-                <div class="right-content">
-                    <p class="project-description">A mixed methods study comparing how CS2 students learn programming concepts using LLMs versus traditional online methods, examining information gathering approaches and outcomes across both scenarios.</p>
-                    <div class="project-links">
-                        <a href="https://arxiv.org/abs/2501.11935" target="_blank">
-                            <i class="fas fa-file-pdf"></i> View Paper
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="project-card">
-                <div class="left-content">
+                <div class="content">
                     <h3 class="project-title">SoulFull</h3>
                     <p class="project-conference">Course Project</p>
-                </div>
-                <div class="right-content">
                     <p class="project-description">Designed a high-fidelity prototype for an app that supports people struggling with binge eating by applying fundamental interaction design principles.</p>
-                    <div class="project-links">
-                        <a href="https://www.figma.com/file/OLqV3BIDvyHij9iheE4esL/" target="_blank">
-                            <i class="fab fa-figma"></i> View Prototype
-                        </a>
-                    </div>
+                </div>
+                <div class="project-links">
+                    <a href="https://www.figma.com/file/OLqV3BIDvyHij9iheE4esL/" target="_blank">
+                        <i class="fab fa-figma"></i> View Prototype
+                    </a>
                 </div>
             </div>
 
             <div class="project-card">
-                <div class="left-content">
+                <div class="content">
                     <h3 class="project-title">Intersectionality in Oversampling on Social Attributes</h3>
                     <p class="project-conference">Semester Project, ML4ED Lab, EPFL</p>
-                </div>
-                <div class="right-content">
-                    <p class="project-description">Built on the paper by <a href="https://dl.acm.org/doi/abs/10.1145/3576050.3576149" target="_blank" style="color: var(--secondary-color); text-decoration: none; transition: color 0.3s ease;">Cock et al.</a> to analyze the impact of intersectionality on different oversampling strategies for a behavioural predictive model in education.</p>
+                    <p class="project-description">Built on the paper by <a href="https://dl.acm.org/doi/abs/10.1145/3576050.3576149" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Cock et al.</a> to analyze the impact of intersectionality on different oversampling strategies for a behavioural predictive model in education.</p>
                 </div>
             </div>
             
             <div class="project-card">
-                <div class="left-content">
+                <div class="content">
                     <h3 class="project-title">(For Fun!) Bandersnatch</h3>
+                    <p class="project-description">A choose-your-own-adventure style interactive game written in C++ (name inspired from a <a href="https://en.wikipedia.org/wiki/Black_Mirror:_Bandersnatch" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Netflix Show</a>).</p>
                 </div>
-                <div class="right-content">
-                    <p class="project-description">A choose-your-own-adventure style interactive game written in C++ (name inspired from a <a href="https://en.wikipedia.org/wiki/Black_Mirror:_Bandersnatch" target="_blank" style="color: var(--secondary-color); text-decoration: none; transition: color 0.3s ease;">Netflix Show</a>).</p>
-                    <div class="project-links">
-                        <a href="https://github.com/Aeyush10/Bandersnatch_for_fun" target="_blank">
-                            <i class="fab fa-github"></i> View on GitHub
-                        </a>
-                    </div>
+                <div class="project-links">
+                    <a href="https://github.com/Aeyush10/Bandersnatch_for_fun" target="_blank">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
                 </div>
             </div>
 
             <!-- <div class="project-card">
-                <div class="left-content">
+                <div class="content">
                     <h3 class="project-title">Parallel View Synthesis</h3>
                     <p class="project-conference">Course Project</p>
                 </div>
-                <div class="right-content">
                     <p class="project-description">A research project focusing on optimizing view synthesis through parallel processing techniques. This work explores efficient methods for generating novel views in 3D environments, with applications in virtual and augmented reality.</p>
-                    <div class="project-links">
+                </div>
+                <div class="project-links">
                         <a href="https://github.com/PrateekSogra/CS677-Parallel-optimised-View-Synthesis" target="_blank">
                             <i class="fab fa-github"></i> View on GitHub
                         </a>
-                    </div>
                 </div>
             </div> -->
 <!-- 
             <div class="project-card">
-                <div class="left-content">
+                <div class="content">
                     <h3 class="project-title">A Whole N</h3>
                 </div>
-                <div class="right-content">
                     <p class="project-description">Advanced computer graphics project exploring novel visualization techniques and user interaction paradigms. This research focuses on developing intuitive interfaces for complex data visualization and 3D interaction.</p>
-                    <div class="project-links">
+                </div>
+                <div class="project-links">
                         <a href="https://github.com/Aeyush10/CS341_Graphics_Project" target="_blank">
                             <i class="fab fa-github"></i> View on GitHub
                         </a>
-                    </div>
                 </div>
             </div> -->
 
