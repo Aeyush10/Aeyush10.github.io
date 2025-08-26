@@ -18,6 +18,18 @@
             --border-color: #374151;
         }
 
+        /* Light theme variables */
+        :root[data-theme="light"] {
+            --primary-color: #1565c0;
+            --secondary-color: #1976d2;
+            --accent-color: #1e88e5;
+            --text-color: #2c3e50;
+            --light-text: #64748b;
+            --background-color: #ffffff;
+            --card-background: #f8fafc;
+            --border-color: #e2e8f0;
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -25,6 +37,7 @@
             line-height: 1.6;
             color: var(--text-color);
             background-color: var(--background-color);
+            transition: color 0.3s ease, background-color 0.3s ease;
         }
 
         .container {
@@ -42,6 +55,13 @@
             top: 0;
             z-index: 100;
             box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        :root[data-theme="light"] header {
+            background-color: #f8fafc;
+            color: var(--text-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .header-content {
@@ -65,6 +85,11 @@
             opacity: 1;
         }
 
+        /* Header name color in light mode */
+        :root[data-theme="light"] .site-title a {
+            color: #0d47a1 !important;
+        }
+
         nav ul {
             display: flex;
             list-style: none;
@@ -80,8 +105,76 @@
             transition: color 0.3s ease;
         }
 
+        :root[data-theme="light"] nav a {
+            color: var(--text-color);
+        }
+
         nav a:hover {
             color: var(--accent-color);
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: none;
+            border: 1px solid #1e40af;
+            padding: 0.3rem 0.6rem;
+            color: white;
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        /* First button (Light) - rounded left, flat right */
+        #lightToggle {
+            border-radius: 15px 0 0 15px;
+            border-right: 1px solid #1e40af;
+            margin-left: 2rem;
+        }
+
+        /* Second button (Dark) - flat left, rounded right */
+        #darkToggle {
+            border-radius: 0 15px 15px 0;
+            border-left: none;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        :root[data-theme="light"] .theme-toggle {
+            border-color: #1e40af;
+            color: var(--text-color);
+        }
+
+        :root[data-theme="light"] #lightToggle {
+            border-right-color: #1e40af;
+        }
+
+        :root[data-theme="light"] .theme-toggle:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .theme-toggle i {
+            transition: transform 0.3s ease;
+        }
+
+        /* Active theme button styling */
+        .theme-toggle.active {
+            background-color: #1e40af;
+            border-color: #1e40af;
+            color: white;
+        }
+
+        :root[data-theme="light"] .theme-toggle.active {
+            background-color: #1e40af;
+            border-color: #1e40af;
+            color: white;
         }
 
         /* Main Content Styles */
@@ -131,9 +224,13 @@
             padding: 1.25rem;
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out, background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
             scroll-margin-top: 5rem;
             border: 1px solid var(--border-color);
+        }
+
+        :root[data-theme="light"] .section {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
         .section.visible {
@@ -214,6 +311,14 @@
             color: #bfdbfe;
         }
 
+        :root[data-theme="light"] .about-text a {
+            color: #1565c0;
+        }
+
+        :root[data-theme="light"] .about-text a:hover {
+            color: #0d47a1;
+        }
+
         .about-links {
             margin-top: 1.5rem;
             display: flex;
@@ -247,6 +352,16 @@
         .about-links a:hover {
             background-color: #93c5fd;
             color: #111827;
+        }
+
+        :root[data-theme="light"] .about-links a {
+            color: #1565c0;
+            border-color: #1565c0;
+        }
+
+        :root[data-theme="light"] .about-links a:hover {
+            background-color: #1565c0;
+            color: #ffffff;
         }
 
         .about-links i {
@@ -299,6 +414,10 @@
             margin: 0 0 0.05rem 0;
         }
 
+        :root[data-theme="light"] .project-title {
+            color: #0d47a1;
+        }
+
         .project-authors {
             color: var(--light-text);
             font-size: 0.95rem;
@@ -321,6 +440,38 @@
             line-height: 1.5;
         }
 
+        .project-description a {
+            color: #93c5fd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .project-description a:hover {
+            color: #bfdbfe;
+        }
+
+        :root[data-theme="light"] .project-description a {
+            color: #1565c0;
+        }
+
+        :root[data-theme="light"] .project-description a:hover {
+            color: #0d47a1;
+        }
+
+        /* Main name in about section */
+        :root[data-theme="light"] .main-name {
+            color: #0d47a1 !important;
+        }
+
+        /* Inline hyperlinks in text */
+        :root[data-theme="light"] a[style*="color: #93c5fd"] {
+            color: #0d47a1 !important;
+        }
+
+        :root[data-theme="light"] a[style*="color: #93c5fd"]:hover {
+            color: #1565c0 !important;
+        }
+
         .project-links a {
             display: inline-flex;
             align-items: center;
@@ -338,6 +489,16 @@
         .project-links a:hover {
             background-color: #93c5fd;
             color: #111827;
+        }
+
+        :root[data-theme="light"] .project-links a {
+            color: #1565c0;
+            border-color: #1565c0;
+        }
+
+        :root[data-theme="light"] .project-links a:hover {
+            background-color: #1565c0;
+            color: #ffffff;
         }
 
         .project-links i {
@@ -369,6 +530,15 @@
 
         .social-links a:hover {
             color: #bfdbfe;
+            transform: translateY(-2px);
+        }
+
+        :root[data-theme="light"] .social-links a {
+            color: #1565c0;
+        }
+
+        :root[data-theme="light"] .social-links a:hover {
+            color: #0d47a1;
             transform: translateY(-2px);
         }
 
@@ -423,10 +593,19 @@
                 gap: 1rem;
             }
 
+            .header-content > div {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
             nav ul {
                 flex-direction: column;
                 align-items: center;
                 gap: 1rem;
+            }
+
+            .theme-toggle {
+                margin-left: 0;
             }
 
             .project-card .content {
@@ -456,16 +635,24 @@
     <header>
         <div class="header-content">
             <h1 class="site-title"><a href="#top" style="text-decoration: none; color: inherit;">Aayush Kumar</a></h1>
-            <nav>
-                <ul>
-                    <li><a href="#research">About</a></li>
-                    <li><a href="#publications">Publications</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="portfolio.html">Portfolio</a></li>
-                    <li><a href="CV/cv.html">CV</a></li>
-                </ul>
-            </nav>
+            <div style="display: flex; align-items: center;">
+                <nav>
+                    <ul>
+                        <li><a href="#research">About</a></li>
+                        <li><a href="#publications">Publications</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="CV/cv.html">CV</a></li>
+                    </ul>
+                </nav>
+                <button class="theme-toggle" id="lightToggle" data-theme="light">
+                    <span>Light</span>
+                </button>
+                <button class="theme-toggle" id="darkToggle" data-theme="dark">
+                    <span>Dark</span>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -478,7 +665,7 @@
                     <div class="about-text">
                         <!-- <h2>About Me</h2> -->
                         <div style="margin-bottom: 1.5rem;">
-                            <div style="font-size: 2rem; font-weight: 600; color: white; line-height: 1.8;">Aayush Kumar</div>
+                            <div class="main-name" style="font-size: 2rem; font-weight: 600; color: white; line-height: 1.8;">Aayush Kumar</div>
                             <!-- <div style="font-size: 1.25rem; color: white; line-height: 1.2;">I'm interested in <strong>human-AI interactions</strong>, particularly in context of <strong>software engineering</strong> and <strong> programming education</strong>. Read on to know more!</div> -->
                         </div>
                         Research Fellow @
@@ -814,6 +1001,44 @@
         if (firstSection) {
             headerObserver.observe(firstSection);
         }
+
+        // Theme toggle functionality
+        const lightToggle = document.getElementById('lightToggle');
+        const darkToggle = document.getElementById('darkToggle');
+        const html = document.documentElement;
+
+        // Check for saved theme preference or default to 'dark'
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        
+        // Apply the current theme
+        function applyTheme(theme) {
+            // Remove active class from both buttons
+            lightToggle.classList.remove('active');
+            darkToggle.classList.remove('active');
+            
+            if (theme === 'light') {
+                html.setAttribute('data-theme', 'light');
+                lightToggle.classList.add('active');
+            } else {
+                html.removeAttribute('data-theme');
+                darkToggle.classList.add('active');
+            }
+        }
+
+        // Initialize theme on page load
+        applyTheme(currentTheme);
+
+        // Light button - always switches to light mode
+        lightToggle.addEventListener('click', () => {
+            applyTheme('light');
+            localStorage.setItem('theme', 'light');
+        });
+
+        // Dark button - always switches to dark mode
+        darkToggle.addEventListener('click', () => {
+            applyTheme('dark');
+            localStorage.setItem('theme', 'dark');
+        });
     </script>
 </body>
 </html> 
