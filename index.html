@@ -569,6 +569,84 @@
             margin: 0 0.2rem;
         }
 
+        /* Hamburger Menu - hidden by default */
+        .hamburger {
+            display: none;
+        }
+
+        /* Mobile Navigation Drawer - hidden on desktop */
+        .mobile-nav {
+            display: none;
+        }
+
+        .mobile-nav.open {
+            left: 0;
+        }
+
+        .mobile-nav .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 3rem 0 2rem 0;
+        }
+
+        .mobile-nav li {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 1rem 0;
+            display: block;
+            border-bottom: 1px solid var(--border-color);
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--primary-color);
+        }
+
+        .mobile-nav .theme-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .mobile-nav .mobile-theme {
+            flex: 1;
+        }
+
+        /* Mobile Overlay */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .mobile-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 15px;
@@ -594,8 +672,145 @@
             }
 
             .header-content > div {
+                display: none !important;
+            }
+
+            /* Show hamburger on mobile */
+            .hamburger {
+                display: flex;
                 flex-direction: column;
+                justify-content: space-between;
+                width: 24px;
+                height: 18px;
+                background: none;
+                border: none;
+                cursor: pointer;
+            }
+
+            .hamburger span {
+                display: block;
+                height: 2px;
+                width: 100%;
+                background-color: var(--text-color);
+                transition: all 0.3s ease;
+            }
+
+            .header-content {
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
                 gap: 1rem;
+            }
+
+            /* Show mobile nav on mobile */
+            .mobile-nav {
+                display: block;
+                position: fixed;
+                top: 0;
+                left: -100%;
+                width: 320px;
+                height: 100vh;
+                background-color: var(--card-background);
+                z-index: 1000;
+                transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                padding: 0;
+                box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+                overflow-y: auto;
+                border-right: 1px solid var(--border-color);
+            }
+
+            .mobile-nav .close-btn {
+                position: absolute;
+                top: 1.5rem;
+                right: 1.5rem;
+                background: rgba(255, 255, 255, 0.1);
+                border: none;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+                color: var(--text-color);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .mobile-nav .close-btn:hover {
+                background: rgba(255, 255, 255, 0.2);
+            }
+
+            .mobile-nav ul {
+                list-style: none;
+                padding: 0;
+                margin: 5rem 0 2rem 0;
+                padding: 0 2rem;
+            }
+
+            .mobile-nav li {
+                margin-bottom: 0;
+                border-radius: 12px;
+                overflow: hidden;
+                margin: 0.2rem 0;
+            }
+
+            .mobile-nav a {
+                color: var(--text-color);
+                text-decoration: none;
+                font-size: 1.1rem;
+                font-weight: 500;
+                padding: 0.2rem 1.5rem;
+                display: block;
+                border: none;
+                background: transparent;
+            }
+
+            .mobile-nav a:hover {
+                color: var(--primary-color);
+                background: rgba(96, 165, 250, 0.1);
+            }
+
+            .mobile-nav .theme-buttons {
+                display: flex;
+                gap: 0;
+                margin: 2rem;
+                justify-content: center;
+            }
+
+            .mobile-nav .mobile-theme {
+                padding: 0.5rem 1rem;
+                background-color: transparent;
+                color: #93c5fd;
+                text-decoration: none;
+                border: 1px solid #93c5fd;
+                border-radius: 0;
+                cursor: pointer;
+                transition: background-color 0.3s ease, color 0.3s ease;
+                font-weight: 400;
+                font-size: 0.9rem;
+                min-width: 80px;
+            }
+
+            .mobile-nav .mobile-theme:first-child {
+                border-top-left-radius: 5px;
+                border-bottom-left-radius: 5px;
+                border-right: none;
+            }
+
+            .mobile-nav .mobile-theme:last-child {
+                border-top-right-radius: 5px;
+                border-bottom-right-radius: 5px;
+                border-left: none;
+            }
+
+            .mobile-nav .mobile-theme:hover {
+                background-color: #93c5fd;
+                color: #0f172a;
+            }
+
+            .mobile-nav .mobile-theme.active {
+                background-color: #93c5fd;
+                color: #0f172a;
             }
 
             nav ul {
@@ -634,6 +849,11 @@
     <div id="top"></div>
     <header>
         <div class="header-content">
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <h1 class="site-title"><a href="#top" style="text-decoration: none; color: inherit;">Aayush Kumar</a></h1>
             <div style="display: flex; align-items: center;">
                 <nav>
@@ -643,7 +863,7 @@
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#contact">Contact</a></li>
                         <li><a href="portfolio.html">Portfolio</a></li>
-                        <li><a href="CV/cv.html">CV</a></li>
+                        <li><a href="CV/Aayush_Kumar_CV.pdf">CV</a></li>
                     </ul>
                 </nav>
                 <button class="theme-toggle" id="lightToggle" data-theme="light">
@@ -655,6 +875,28 @@
             </div>
         </div>
     </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <nav class="mobile-nav" id="mobileNav">
+        <button class="close-btn" id="closeBtn">&times;</button>
+        <ul>
+            <li><a href="#research">About</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="CV/Aayush_Kumar_CV.pdf">CV</a></li>
+        </ul>
+        <div class="theme-buttons">
+            <button class="theme-toggle mobile-theme" data-theme="light">
+                <span>Light</span>
+            </button>
+            <button class="theme-toggle mobile-theme" data-theme="dark">
+                <span>Dark</span>
+            </button>
+        </div>
+    </nav>
 
     <main class="container">
         <!-- About Section -->
@@ -673,7 +915,7 @@
                         B.Tech CSE @ <a href="https://www.iitk.ac.in/" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Indian Institute of Technology Kanpur</a> (2020-2024)
                     </div>
                     <div class="about-links">
-                        <a href="CV/cv.html" target="_blank">
+                        <a href="CV/Aayush_Kumar_CV.pdf" target="_blank">
                             <i class="fas fa-file-alt"></i> CV
                         </a>
                         <a href="https://scholar.google.com/citations?user=x-Ih638AAAAJ&hl=en" target="_blank">
@@ -1039,6 +1281,52 @@
         darkToggle.addEventListener('click', () => {
             applyTheme('dark');
             localStorage.setItem('theme', 'dark');
+        });
+
+        // Mobile menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileOverlay = document.getElementById('mobileOverlay');
+        const closeBtn = document.getElementById('closeBtn');
+
+        function openMobileNav() {
+            mobileNav.classList.add('open');
+            mobileOverlay.classList.add('open');
+        }
+
+        function closeMobileNav() {
+            mobileNav.classList.remove('open');
+            mobileOverlay.classList.remove('open');
+        }
+
+        hamburger.addEventListener('click', openMobileNav);
+        closeBtn.addEventListener('click', closeMobileNav);
+        mobileOverlay.addEventListener('click', closeMobileNav);
+
+        // Close menu when clicking nav links
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', closeMobileNav);
+        });
+
+        // Handle mobile theme buttons
+        document.querySelectorAll('.mobile-theme').forEach(button => {
+            button.addEventListener('click', () => {
+                const theme = button.dataset.theme;
+                applyTheme(theme);
+                localStorage.setItem('theme', theme);
+                
+                // Update mobile button active states
+                document.querySelectorAll('.mobile-theme').forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+            });
+        });
+
+        // Set initial active state for mobile buttons
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.querySelectorAll('.mobile-theme').forEach(button => {
+            if (button.dataset.theme === savedTheme) {
+                button.classList.add('active');
+            }
         });
     </script>
 </body>
