@@ -116,65 +116,28 @@
         /* Theme Toggle Button */
         .theme-toggle {
             background: none;
-            border: 1px solid #1e40af;
-            padding: 0.3rem 0.6rem;
+            border: none;
+            padding: 0;
             color: white;
             cursor: pointer;
-            font-size: 0.8rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
+            font-size: 1rem;
+            transition: color 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 0.3rem;
-        }
-
-        /* First button (Light) - rounded left, flat right */
-        #lightToggle {
-            border-radius: 15px 0 0 15px;
-            border-right: 1px solid #1e40af;
+            justify-content: center;
             margin-left: 2rem;
         }
 
-        /* Second button (Dark) - flat left, rounded right */
-        #darkToggle {
-            border-radius: 0 15px 15px 0;
-            border-left: none;
-        }
-
         .theme-toggle:hover {
-            border-color: var(--accent-color);
             color: var(--accent-color);
         }
 
         :root[data-theme="light"] .theme-toggle {
-            border-color: #1e40af;
             color: var(--text-color);
         }
 
-        :root[data-theme="light"] #lightToggle {
-            border-right-color: #1e40af;
-        }
-
         :root[data-theme="light"] .theme-toggle:hover {
-            border-color: var(--accent-color);
             color: var(--accent-color);
-        }
-
-        .theme-toggle i {
-            transition: transform 0.3s ease;
-        }
-
-        /* Active theme button styling */
-        .theme-toggle.active {
-            background-color: #1e40af;
-            border-color: #1e40af;
-            color: white;
-        }
-
-        :root[data-theme="light"] .theme-toggle.active {
-            background-color: #1e40af;
-            border-color: #1e40af;
-            color: white;
         }
 
         /* Main Content Styles */
@@ -777,42 +740,6 @@
                 justify-content: center;
             }
 
-            .mobile-nav .mobile-theme {
-                padding: 0.5rem 1rem;
-                background-color: transparent;
-                color: #93c5fd;
-                text-decoration: none;
-                border: 1px solid #93c5fd;
-                border-radius: 0;
-                cursor: pointer;
-                transition: background-color 0.3s ease, color 0.3s ease;
-                font-weight: 400;
-                font-size: 0.9rem;
-                min-width: 80px;
-            }
-
-            .mobile-nav .mobile-theme:first-child {
-                border-top-left-radius: 5px;
-                border-bottom-left-radius: 5px;
-                border-right: none;
-            }
-
-            .mobile-nav .mobile-theme:last-child {
-                border-top-right-radius: 5px;
-                border-bottom-right-radius: 5px;
-                border-left: none;
-            }
-
-            .mobile-nav .mobile-theme:hover {
-                background-color: #93c5fd;
-                color: #0f172a;
-            }
-
-            .mobile-nav .mobile-theme.active {
-                background-color: #93c5fd;
-                color: #0f172a;
-            }
-
             nav ul {
                 flex-direction: column;
                 align-items: center;
@@ -866,11 +793,8 @@
                         <li><a href="CV/Aayush_Kumar_CV.pdf">CV</a></li>
                     </ul>
                 </nav>
-                <button class="theme-toggle" id="lightToggle" data-theme="light">
-                    <span>Light</span>
-                </button>
-                <button class="theme-toggle" id="darkToggle" data-theme="dark">
-                    <span>Dark</span>
+                <button class="theme-toggle" id="themeToggle">
+                    <i class="fas fa-sun"></i>
                 </button>
             </div>
         </div>
@@ -889,11 +813,8 @@
             <li><a href="CV/Aayush_Kumar_CV.pdf">CV</a></li>
         </ul>
         <div class="theme-buttons">
-            <button class="theme-toggle mobile-theme" data-theme="light">
-                <span>Light</span>
-            </button>
-            <button class="theme-toggle mobile-theme" data-theme="dark">
-                <span>Dark</span>
+            <button class="theme-toggle mobile-theme" id="mobileThemeToggle">
+                <i class="fas fa-sun"></i>
             </button>
         </div>
     </nav>
@@ -996,17 +917,18 @@
 
             <div class="project-card">
                 <div class="content">
-                    <h3 class="project-title">TEN: Table Explicitization, Neurosymbolically</h3>
-                    <p class="project-authors">Nikita Mehrotra, <span class="author-name">Aayush Kumar</span>, Sumit Gulwani, Arjun Radhakrishna, Ashish Tiwari</p>
-                    <p class="project-conference">arXiv Pre-print</p>
-                    <p class="project-description">Defining and evaluating with real users a novel approach to extract tables from semi-structured input text utilizing both neurosymbolic methods as well as LLMs.</p>
+                    <h3 class="project-title">UnWEIRDing LLM Entity Recommendations</h3>
+                    <p class="project-authors"><span class="author-name">Aayush Kumar</span>, Sanket Mhatre</p>
+                    <p class="project-conference">LM4UC Workshop, AAAI 2026 (To appear)</p>
+                    <p class="project-description">An examination of the cultural biases shown by a variety of LLMs in the symbols that they generate, and experimenting with prompting techniques to reduce such biases.</p>
                 </div>
                 <div class="project-links">
-                    <a href="https://arxiv.org/abs/2508.09324" target="_blank">
+                    <a href="https://arxiv.org/abs/2511.18403" target="_blank">
                         <i class="fas fa-external-link-alt"></i> View Pre-print
                     </a>
                 </div>
             </div>
+
 
                         <div class="project-card">
                 <div class="content">
@@ -1036,6 +958,19 @@
                 </div>
             </div>
 
+            <div class="project-card">
+                <div class="content">
+                    <h3 class="project-title">TEN: Table Explicitization, Neurosymbolically</h3>
+                    <p class="project-authors">Nikita Mehrotra, <span class="author-name">Aayush Kumar</span>, Sumit Gulwani, Arjun Radhakrishna, Ashish Tiwari</p>
+                    <p class="project-conference">arXiv Pre-print</p>
+                    <p class="project-description">Defining and evaluating with real users a novel approach to extract tables from semi-structured input text utilizing both neurosymbolic methods as well as LLMs.</p>
+                </div>
+                <div class="project-links">
+                    <a href="https://arxiv.org/abs/2508.09324" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> View Pre-print
+                    </a>
+                </div>
+            </div>
 
             <!-- <div class="project-card">
                 <div class="content">
@@ -1251,41 +1186,34 @@
         }
 
         // Theme toggle functionality
-        const lightToggle = document.getElementById('lightToggle');
-        const darkToggle = document.getElementById('darkToggle');
+        const themeToggle = document.getElementById('themeToggle');
         const html = document.documentElement;
 
         // Check for saved theme preference or default to 'dark'
         const currentTheme = localStorage.getItem('theme') || 'dark';
-        
+
         // Apply the current theme
         function applyTheme(theme) {
-            // Remove active class from both buttons
-            lightToggle.classList.remove('active');
-            darkToggle.classList.remove('active');
-            
+            const icon = themeToggle.querySelector('i');
+
             if (theme === 'light') {
                 html.setAttribute('data-theme', 'light');
-                lightToggle.classList.add('active');
+                icon.className = 'fas fa-moon';
             } else {
                 html.removeAttribute('data-theme');
-                darkToggle.classList.add('active');
+                icon.className = 'fas fa-sun';
             }
         }
 
         // Initialize theme on page load
         applyTheme(currentTheme);
 
-        // Light button - always switches to light mode
-        lightToggle.addEventListener('click', () => {
-            applyTheme('light');
-            localStorage.setItem('theme', 'light');
-        });
-
-        // Dark button - always switches to dark mode
-        darkToggle.addEventListener('click', () => {
-            applyTheme('dark');
-            localStorage.setItem('theme', 'dark');
+        // Toggle button - switches between light and dark mode
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            applyTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
         });
 
         // Mobile menu functionality
@@ -1313,25 +1241,28 @@
             link.addEventListener('click', closeMobileNav);
         });
 
-        // Handle mobile theme buttons
-        document.querySelectorAll('.mobile-theme').forEach(button => {
-            button.addEventListener('click', () => {
-                const theme = button.dataset.theme;
-                applyTheme(theme);
-                localStorage.setItem('theme', theme);
-                
-                // Update mobile button active states
-                document.querySelectorAll('.mobile-theme').forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-            });
-        });
+        // Handle mobile theme button
+        const mobileThemeToggle = document.getElementById('mobileThemeToggle');
 
-        // Set initial active state for mobile buttons
-        const savedTheme = localStorage.getItem('theme') || 'dark';
-        document.querySelectorAll('.mobile-theme').forEach(button => {
-            if (button.dataset.theme === savedTheme) {
-                button.classList.add('active');
+        // Sync mobile button icon with current theme
+        function syncMobileTheme(theme) {
+            const icon = mobileThemeToggle.querySelector('i');
+            if (theme === 'light') {
+                icon.className = 'fas fa-moon';
+            } else {
+                icon.className = 'fas fa-sun';
             }
+        }
+
+        // Initialize mobile theme icon
+        syncMobileTheme(currentTheme);
+
+        mobileThemeToggle.addEventListener('click', () => {
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            applyTheme(newTheme);
+            syncMobileTheme(newTheme);
+            localStorage.setItem('theme', newTheme);
         });
     </script>
 </body>
