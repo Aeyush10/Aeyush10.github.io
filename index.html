@@ -253,6 +253,7 @@
             opacity: 0;
             transform: translateX(-30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            cursor: pointer;
         }
 
         .about-text {
@@ -823,7 +824,9 @@
         <!-- About Section -->
         <section id="about" class="section">
             <div class="about-content">
-                <img src="img/me3.jpg" alt="Aayush Kumar" class="profile-image" style="transform: scaleX(1);">
+                <img src="img/me3.jpg" alt="Aayush Kumar" class="profile-image"
+                     onmouseenter="this.src='img/me_fun.jpg';"
+                     onmouseleave="this.src='img/me3.jpg';">
                 <div>
                     <div class="about-text">
                         <!-- <h2>About Me</h2> -->
@@ -860,9 +863,9 @@
             <div class="about-content">
                 <div class="about-text">
                     <h2>About</h2>
-                    <p>I'm a Research Fellow at the <a href="https://www.microsoft.com/en-us/research/group/prose/" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">PROSE team</a> at Microsoft, where I work on agentic AI tools for software and spreadsheet development, guided by <a href="https://www.linkedin.com/in/captainemerson" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Dr. Emerson Murphy-Hill</a>, as well as <a href="https://www.microsoft.com/en-us/research/people/gsoares/?msockid=045cc1b220536c281b63d43821bb6de9" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Dr. Gustavo Soares</a> and <a href="https://www.microsoft.com/en-us/research/people/sumitg/?msockid=045cc1b220536c281b63d43821bb6de9" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Dr. Sumit Gulwani</a>. By studying interactions with such tools, I aim to understand how we can improve them to make simple and effective tools for users.
+                    <p>I'm a Research Fellow at the <a href="https://www.microsoft.com/en-us/research/group/prose/" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">PROSE team</a> at Microsoft, where I work on evaluating and designing agentic AI tools for programmers and end users, guided by <a href="https://www.linkedin.com/in/captainemerson" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Dr. Emerson Murphy-Hill</a>, <a href="https://www.microsoft.com/en-us/research/people/gsoares/?msockid=045cc1b220536c281b63d43821bb6de9" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Dr. Gustavo Soares</a> and <a href="https://www.microsoft.com/en-us/research/people/sumitg/?msockid=045cc1b220536c281b63d43821bb6de9" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Dr. Sumit Gulwani</a>. By investigating interactions with agents, I aim to understand how we can better design them to collaborate effectively with users.
                     I completed my bachelor's degree in Computer Science and Engineering at <a href="https://www.iitk.ac.in/" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Indian Institute of Technology Kanpur</a>, where I was fortunate to be advised by <a href="https://sruti-s-ragavan.github.io/" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Prof. Sruti Ragavan</a>. During this time, I investigated the opportunities and challenges of using LLMs for programming education.</p>
-                    <p>My research interests lie at the intersection of human-AI interactions, software engineering, and programming education. I am particularly interested in exploring human-AI collaborations that improve upon the individual capabilities of both humans and AI and enrich the skill sets of users.</p>
+                    <p>My research interests lie at the intersection of human-computer interaction, generative AI, and software engineering. I am particularly interested in exploring human-AI collaborations that improve upon the individual capabilities of both humans and AI and facilitate growth and long-term benefits for users.</p>
                 </div>
             </div>
         </section>
@@ -905,7 +908,7 @@
                 <div class="content">
                     <h3 class="project-title">To Google or To ChatGPT? A Comparison of CS2 Students' Information Gathering Approaches and Outcomes</h3>
                     <p class="project-authors"><span class="author-name">Aayush Kumar</span>, Daniel Prol, Amin Alipour, Sruti Srinivasa Ragavan</p>
-                    <p class="project-conference">arXiv Pre-print</p>
+                    <p class="project-conference">Pre-print</p>
                     <p class="project-description">A mixed methods study comparing how CS2 students learn programming concepts using LLMs versus traditional online methods, examining information gathering approaches and outcomes across both scenarios.</p>
                 </div>
                 <div class="project-links">
@@ -919,7 +922,7 @@
                 <div class="content">
                     <h3 class="project-title">UnWEIRDing LLM Entity Recommendations</h3>
                     <p class="project-authors"><span class="author-name">Aayush Kumar</span>, Sanket Mhatre</p>
-                    <p class="project-conference">LM4UC Workshop, AAAI 2026 (To appear)</p>
+                    <p class="project-conference">Pre-print</p>
                     <p class="project-description">An examination of the cultural biases shown by a variety of LLMs in the symbols that they generate, and experimenting with prompting techniques to reduce such biases.</p>
                 </div>
                 <div class="project-links">
@@ -962,7 +965,7 @@
                 <div class="content">
                     <h3 class="project-title">TEN: Table Explicitization, Neurosymbolically</h3>
                     <p class="project-authors">Nikita Mehrotra, <span class="author-name">Aayush Kumar</span>, Sumit Gulwani, Arjun Radhakrishna, Ashish Tiwari</p>
-                    <p class="project-conference">arXiv Pre-print</p>
+                    <p class="project-conference">Pre-print</p>
                     <p class="project-description">Defining and evaluating with real users a novel approach to extract tables from semi-structured input text utilizing both neurosymbolic methods as well as LLMs.</p>
                 </div>
                 <div class="project-links">
@@ -1264,6 +1267,7 @@
             syncMobileTheme(newTheme);
             localStorage.setItem('theme', newTheme);
         });
-    </script>
+
+        </script>
 </body>
 </html> 
