@@ -24,7 +24,7 @@
             --secondary-color: #1976d2;
             --accent-color: #1e88e5;
             --text-color: #2c3e50;
-            --light-text: #64748b;
+            --light-text: #2a3f5f;
             --background-color: #fff5f5;
             --card-background: #fff0f0;
             --border-color: #ffd6d6;
@@ -165,6 +165,13 @@
         /* Main Content Styles */
         main {
             padding-top: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
         }
 
         /* Add animation keyframes */
@@ -787,6 +794,7 @@
 </head>
 
 <body>
+    <canvas id="brushCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
     <div id="top"></div>
     <header>
         <div class="header-content">
@@ -1219,6 +1227,7 @@
                 html.removeAttribute('data-theme');
                 icon.className = 'fas fa-sun';
             }
+            // fillBg();
         }
 
         // Initialize theme on page load
@@ -1280,6 +1289,96 @@
             syncMobileTheme(newTheme);
             localStorage.setItem('theme', newTheme);
         });
+
+        // Brush canvas effect
+        const brushCanvas = document.getElementById('brushCanvas');
+        const bctx = brushCanvas.getContext('2d');
+
+        function getBgRgb() {
+            return document.documentElement.getAttribute('data-theme') === 'light'
+                ? [255, 245, 245]
+                : [24, 12, 12];
+        }
+
+        function resizeBrushCanvas() {
+            brushCanvas.width = window.innerWidth;
+            brushCanvas.height = window.innerHeight;
+            // canvas stays transparent — CSS gradient on body shows through
+        }
+
+        resizeBrushCanvas();
+        window.addEventListener('resize', resizeBrushCanvas);
+
+        let lastMX = -1, lastMY = -1, lastMT = 0;
+        const activeStrokes = [];  // {x, y, speed, born}
+        const FADE_MS = 400;       // how long a stroke lives
+
+        document.addEventListener('mousemove', (e) => {
+            const now = performance.now();
+            const x = e.clientX, y = e.clientY;
+
+            if (lastMX >= 0) {
+                const dx = x - lastMX, dy = y - lastMY;
+                const dt = Math.max(now - lastMT, 1);
+                const speed = Math.sqrt(dx * dx + dy * dy) / dt;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                const steps = Math.max(1, Math.floor(dist / 5));
+                for (let i = 1; i <= steps; i++) {
+                    const t = i / steps;
+                    activeStrokes.push({
+                        x: lastMX + dx * t,
+                        y: lastMY + dy * t,
+                        speed,
+                        born: now
+                    });
+                }
+            }
+
+            lastMX = x; lastMY = y; lastMT = now;
+        });
+
+        function animateBrush() {
+            requestAnimationFrame(animateBrush);
+
+            const now = performance.now();
+
+            // Clear canvas completely each frame so nothing persists
+            bctx.clearRect(0, 0, brushCanvas.width, brushCanvas.height);
+
+            // Draw and prune strokes
+            for (let i = activeStrokes.length - 1; i >= 0; i--) {
+                const pt = activeStrokes[i];
+                const age = now - pt.born;
+                const lifeRatio = 1 - age / FADE_MS;
+
+                if (lifeRatio <= 0.05) {
+                    activeStrokes.splice(i, 1);
+                    continue;
+                }
+
+                const norm = Math.min(pt.speed / 1.8, 1);
+                if (norm < 0.02) { activeStrokes.splice(i, 1); continue; }
+
+                const alpha = norm * 0.5 * lifeRatio;
+                const radius = 12 + norm * 55;
+
+                const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+                const c0 = isLight ? `rgba(255,180,180,${alpha * 0.6})`   : `rgba(255,110,110,${alpha})`;
+                const c1 = isLight ? `rgba(240,150,150,${alpha * 0.2})`   : `rgba(220,70,70,${alpha * 0.4})`;
+
+                const grad = bctx.createRadialGradient(pt.x, pt.y, 0, pt.x, pt.y, radius);
+                grad.addColorStop(0,   c0);
+                grad.addColorStop(0.5, c1);
+                grad.addColorStop(1,   `rgba(200,50,50,0)`);
+
+                bctx.fillStyle = grad;
+                bctx.beginPath();
+                bctx.arc(pt.x, pt.y, radius, 0, Math.PI * 2);
+                bctx.fill();
+            }
+        }
+
+        animateBrush();
 
         </script>
 </body>
