@@ -69,6 +69,54 @@
             box-sizing: border-box;
         }
 
+        /* Availability Banner */
+        .availability-banner {
+            position: relative;
+            z-index: 99;
+            background: linear-gradient(90deg, #ffe4e4, #ffcece, #fff0f0, #ffcece, #ffe4e4);
+            color: #7a1a1a;
+            text-align: center;
+            padding: 14px 24px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            border-top: 1px solid #ffbbbb;
+            border-bottom: 2px solid #f0a0a0;
+            box-shadow: 0 4px 20px rgba(255, 160, 160, 0.25);
+        }
+
+.availability-banner a {
+            color: #a31515;
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #cc333380;
+            transition: color 0.2s ease;
+        }
+
+        .availability-banner a:hover {
+            color: #6b0f0f;
+            text-decoration-color: #6b0f0f;
+        }
+
+        :root[data-theme="light"] .availability-banner {
+            background: linear-gradient(90deg, #3d0e0e, #7a1a1a, #b52828, #7a1a1a, #3d0e0e);
+            color: #ffe8e8;
+            border-top: 1px solid #c0393980;
+            border-bottom: 2px solid #c03939;
+            box-shadow: 0 4px 20px rgba(180, 30, 30, 0.35);
+        }
+
+:root[data-theme="light"] .availability-banner a {
+            color: #ffaaaa;
+            text-decoration-color: #ff6b6b80;
+        }
+
+        :root[data-theme="light"] .availability-banner a:hover {
+            color: #ffd0d0;
+            text-decoration-color: #ffd0d0;
+        }
+
         /* Header Styles */
         header {
             background-color: #100606;
@@ -818,6 +866,7 @@
 <body>
     <canvas id="brushCanvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;"></canvas>
     <div id="top"></div>
+
     <header>
         <div class="header-content">
             <button class="hamburger" id="hamburger">
@@ -863,6 +912,11 @@
         </div>
     </nav>
 
+    <div class="availability-banner">
+        Taking a break till my PhD starts in August and I'm looking to work on something fun —
+        <a href="mailto:aayushk0072@gmail.com">reach out</a> if you'd like to collaborate in any capacity!
+    </div>
+
     <main class="container">
         <!-- About Section -->
         <section id="about" class="section">
@@ -877,8 +931,9 @@
                             <div class="main-name" style="font-size: 2rem; font-weight: 600; color: white; line-height: 1.8;">Aayush Kumar</div>
                             <!-- <div style="font-size: 1.25rem; color: white; line-height: 1.2;">I'm interested in <strong>human-AI interactions</strong>, particularly in context of <strong>software engineering</strong> and <strong> programming education</strong>. Read on to know more!</div> -->
                         </div>
+                        Incoming PhD Student at <a href="https://hci.csail.mit.edu/" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">MIT CSAIL</a> (Fall 2026)<br>
                         Research Fellow @
-                        <a href="https://www.microsoft.com/en-us/research/group/prose/" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Microsoft PROSE</a> (2024 - Present)<br>
+                        <a href="https://www.microsoft.com/en-us/research/group/prose/" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Microsoft PROSE</a> (2024 - 2026)<br>
                         B.Tech CSE @ <a href="https://www.iitk.ac.in/" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Indian Institute of Technology Kanpur</a> (2020-2024)
                     </div>
                     <div class="about-links">
@@ -906,7 +961,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <h2>About</h2>
-                    <p>I'm a Research Fellow at the <a href="https://www.microsoft.com/en-us/research/group/prose/" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">PROSE team</a> at Microsoft, where I work on evaluating and designing agentic AI tools for programmers and end users, guided by <a href="https://www.linkedin.com/in/captainemerson" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Dr. Emerson Murphy-Hill</a>, <a href="https://www.microsoft.com/en-us/research/people/gsoares/?msockid=045cc1b220536c281b63d43821bb6de9" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Dr. Gustavo Soares</a> and <a href="https://www.microsoft.com/en-us/research/people/sumitg/?msockid=045cc1b220536c281b63d43821bb6de9" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Dr. Sumit Gulwani</a>. By investigating interactions with agents, I aim to understand how we can better design them to collaborate effectively with users.
+                    <p>I (until very recently) was a Research Fellow at the <a href="https://www.microsoft.com/en-us/research/group/prose/" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">PROSE team</a> at Microsoft, where I worked on evaluating and designing agentic AI tools for programmers and end users, guided by <a href="https://www.linkedin.com/in/captainemerson" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Dr. Emerson Murphy-Hill</a>, <a href="https://www.microsoft.com/en-us/research/people/gsoares/?msockid=045cc1b220536c281b63d43821bb6de9" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Dr. Gustavo Soares</a> and <a href="https://www.microsoft.com/en-us/research/people/sumitg/?msockid=045cc1b220536c281b63d43821bb6de9" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Dr. Sumit Gulwani</a>. By investigating interactions with agents, I aimed to understand how we can better design them to collaborate effectively with users.
                     I completed my bachelor's degree in Computer Science and Engineering at <a href="https://www.iitk.ac.in/" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Indian Institute of Technology Kanpur</a>, where I was fortunate to be advised by <a href="https://sruti-s-ragavan.github.io/" target="_blank" style="color: #93c5fd; text-decoration: none; transition: color 0.3s ease;">Prof. Sruti Ragavan</a>. During this time, I investigated the opportunities and challenges of using LLMs for programming education.</p>
                     <p>My research interests lie at the intersection of human-computer interaction, generative AI, and software engineering. I am particularly interested in exploring human-AI collaborations that augment the individual capabilities of both humans and AI and facilitate long-term growth and benefits for users.</p>
                 </div>
