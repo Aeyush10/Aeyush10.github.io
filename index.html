@@ -386,17 +386,41 @@
 
         .project-card .project-links {
             position: absolute;
-            top: 2rem;
+            top: 50%;
             right: 1rem;
+            opacity: 0;
+            transform: translate(30px, -50%);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .project-card .project-award {
+            position: absolute;
+            top: 0.75rem;
+            right: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #e59f4f;
             opacity: 0;
             transform: translateX(30px);
             transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
+        :root[data-theme="light"] .project-card .project-award {
+            color: #c2570c;
+        }
+
         .project-card.visible .content,
+        .project-card.visible .project-award,
         .project-card.visible .project-links {
             opacity: 1;
             transform: translateX(0);
+        }
+
+        .project-card.visible .project-links {
+            transform: translate(0, -50%);
         }
 
         .project-card:hover {
@@ -801,6 +825,16 @@
             .project-card .project-links {
                 position: static;
                 margin-top: 1rem;
+                transform: translateX(30px);
+            }
+
+            .project-card.visible .project-links {
+                transform: translateX(0);
+            }
+
+            .project-card .project-award {
+                position: static;
+                margin-bottom: 0.5rem;
             }
 
             .project-title {
@@ -937,6 +971,7 @@
 
 
             <div class="project-card">
+                <div class="project-award"><i class="fas fa-award"></i> Honorable Mention</div>
                 <div class="content">
                     <h3 class="project-title">Plans Work in Mysterious Ways: Evaluating a Plan Mode for Spreadsheet Agents</h3>
                     <p class="project-authors"><span class="author-name">Aayush Kumar</span>, Avik Dutta, Sumit Gulwani, Gustavo Soares, Advait Sarkar, Emerson Murphy-Hill</p>
